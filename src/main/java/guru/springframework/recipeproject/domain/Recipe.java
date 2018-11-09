@@ -24,6 +24,13 @@ public class Recipe {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
 
+    @ManyToMany
+    @JoinTable(name = "recipe_category",
+               joinColumns = @JoinColumn(name = "recipe_id"),
+               inverseJoinColumns = @JoinColumn(name = "category_id"))
+
+    private Set<Category> categories;
+
     @Lob
     private Byte[] image;
 
@@ -94,6 +101,30 @@ public class Recipe {
         this.directions = directions;
     }
 
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
     public Byte[] getImage() {
         return image;
     }
@@ -108,21 +139,5 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
-    }
-
-    public Set<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(Set<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
     }
 }

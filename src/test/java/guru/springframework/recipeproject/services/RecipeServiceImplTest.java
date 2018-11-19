@@ -41,7 +41,7 @@ public class RecipeServiceImplTest {
         assertEquals(recipes.size(), 1);
 
         // verifies amount of times anyone address recipeRepository
-        verify(recipeRepository, times(3)).findAll(); // recipe repository was called once?
+        verify(recipeRepository, times(1)).findAll(); // recipe repository was called once?
 
     }
 }
